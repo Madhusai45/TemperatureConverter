@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:rgb(44, 35, 49);
+        }
+        form{
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 1rem;
+            width: 250px;
+            height: 200px;
+            color:cadetblue;
+            background-color: black;
+        }
+        #tlabel{
+            padding-top: 20px;
+            font-size: 20px;
+        }
+        #text1{
+            padding: 5px;
+            margin-top:10px;
+            margin-bottom:10px;
+            border-radius: 0.5rem;
+            background-color: gray;
+            width: 90%;
+            height: 20px;
+
+
+        }
+        #clabel{
+            margin-bottom:20px;
+            font-size: 20px;
+            
+
+
+        }
+        #clabel1,#flabel1{
+            color: darkorange;
+    
+            font-size: 20px;
+        }
+
+        #submit{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: lemonchiffon;
+            background: blueviolet;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        #fradio,#cradio{
+            size: 20px;
+        }
+
+        #final{
+            padding-top:10px ;
+            color:lightgoldenrodyellow;
+            font-size: 21px;
+            
+        }
+        #submit:hover{
+            color: blue;
+
+        }
+        
+    </style>
+</head>
+<body><form>
+    <label id="tlabel">Enter the Temperature:</label><br>
+    <input type="text" id="text1"><br>
+    <label id="clabel">Select to convert</label><br>
+    <input type="radio" id="cradio" name="btn">
+    <label id="clabel1">Censius</label>
+    <input type="radio" id="fradio" name="btn">
+
+    <label id="flabel1">Fahrenheit</label><br>
+    <button type="submit" id="submit">submit</button><br>
+    <label id="final"></label>
+    </form>
+
+    <script>
+        document.getElementById("submit").onclick= setInterval(function(){
+            let temp;
+            if (document.getElementById("cradio").checked){
+                temp=document.getElementById("text1").value;
+                temp=Number(temp);
+                temp=toCelsius(temp);
+                document.getElementById("final").innerHTML=temp+"°C";
+
+
+            }
+            else if(document.getElementById("fradio").checked){
+                temp=document.getElementById("text1").value;
+
+                temp=Number(temp);
+                temp=tofahrenheit(temp);
+                document.getElementById("final").innerHTML=temp+"°f";
+
+            }
+            else{
+                document.getElementById("final").innerHTML="Select Censius or Fahrenheit";
+            }
+        },0);
+        function toCelsius(temp){
+            return (temp-32)*(5/9);
+        }
+        function tofahrenheit(temp){
+            return (temp *9 / 5) + 32;
+        }
+    </script>
+</body>
+</html>
